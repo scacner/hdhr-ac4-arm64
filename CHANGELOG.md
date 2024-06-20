@@ -1,3 +1,9 @@
+# hdhr-ac4-arm64
+>1.0.0
+>- initial release built on arm64
+>- Emby updated to 4.8.8.0
+---
+# hdhr-ac4
 >1.5.0
 >- major docker build update uses Emby pre-built ffmpeg binaries with excellent AC4 support
 >- removed async argument no longer needed with Emby ffmpeg
