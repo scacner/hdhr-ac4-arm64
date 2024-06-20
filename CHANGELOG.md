@@ -1,7 +1,7 @@
 # hdhr-ac4-arm64
 >1.0.0
 >- initial release built on arm64
->- Emby updated to 4.8.8.0
+>- Emby updated to 4.8.8.0 and is downloaded and added by the Dockerfile during the build
 ---
 # hdhr-ac4
 >1.5.0

@@ -7,11 +7,11 @@ RUN     apt-get -yqq update && \
     apt-get autoremove -y && \
     apt-get clean -y
 
-# Extract ffmpeg from Emby installer (change file name as needed)
-# https://emby.media/linux-server.html add in repo directory
+# Extract ffmpeg from Emby installer, which is added into the Dockerfile
+# https://emby.media/linux-server.html
 FROM base as ffmpeg
 RUN apt-get install -y binutils xz-utils
-COPY emby-server-deb_4.8.8.0_arm64.deb ./
+ADD https://github.com/MediaBrowser/Emby.Releases/releases/download/4.8.8.0/emby-server-deb_4.8.8.0_arm64.deb ./
 RUN ar x emby-server-deb_4.8.8.0_arm64.deb data.tar.xz && \
     tar xf data.tar.xz
 

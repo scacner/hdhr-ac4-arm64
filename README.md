@@ -63,8 +63,9 @@
 >> This should not need to be changed, but can be modified if the ATSC 3.0 streams needs specific ffmpeg handling.
 
 ## Build Docker Container
-> Download the latest Emby installer from https://emby.media/linux-server.html and save it in the docker build
-> directory. Update Dockerfile to point to the file. Currently, using emby-server-deb_4.8.8.0_arm64.deb
+> Get the latest Emby installer download URL from https://emby.media/linux-server.html and update the Dockerfile to use
+> this URL. The Dockerfile downloads and adds the installer to the build. Currently, using
+> `emby-server-deb_4.8.8.0_arm64.deb`.
 
 > Example Dockerfile build command:
 >> `docker build -f Dockerfile -t hdhr-ac4-arm64 .`
