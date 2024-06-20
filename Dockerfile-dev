@@ -9,8 +9,8 @@ RUN     apt-get -yqq update && \
 
 FROM base as ffmpeg
 RUN apt-get install -y binutils xz-utils
-COPY emby-server-deb_4.8.0.21_amd64.deb ./
-RUN ar x emby-server-deb_4.8.0.21_amd64.deb data.tar.xz && \
+COPY emby-server-deb_4.8.8.0_arm64.deb ./
+RUN ar x emby-server-deb_4.8.8.0_arm64.deb data.tar.xz && \
     tar xf data.tar.xz
 
 FROM base AS final
@@ -32,4 +32,3 @@ COPY --from=ffmpeg /home/opt/emby-server/extra/lib/libva*.so.* /usr/lib/
 COPY --from=ffmpeg /home/opt/emby-server/extra/lib/libdrm.so.* /usr/lib/
 COPY --from=ffmpeg /home/opt/emby-server/extra/lib/libmfx.so.* /usr/lib/
 COPY --from=ffmpeg /home/opt/emby-server/extra/lib/libOpenCL.so.* /usr/lib/
-
