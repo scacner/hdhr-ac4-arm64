@@ -36,9 +36,9 @@ hdhr_instance = HdHomeRun(HDHR_IP)
 @app.get("/")
 async def get_info():
     return {
-        "application": "hdhr-ac4",
-        "version": "1.5.0",
-        "website": "https://github.com/johnb-7/hdhr-ac4",
+        "application": "hdhr-ac4-arm64",
+        "version": "1.0.0",
+        "website": "https://github.com/scacner/hdhr-ac4-arm64",
     }
 
 
