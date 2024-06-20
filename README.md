@@ -1,18 +1,11 @@
-# hdhr-ac4 v1.5.0
+# hdhr-ac4-arm64 v1.0.0
 
-## Update
-
-> **May 2024** Added docker image to GitHub Container Registry. This can be used instead of building your own. It was built using the latest repo and "emby-server-deb_4.8.0.21_amd64.deb" for ffmpeg.
-
->> ### Quick start:
-
->> `docker run -p 80:80 -p 5004:5004 -e "HDHR_IP=192.168.1.1" -e "HOST_IP=192.168.1.2" -e "DEVICEID_SWAP=1" ghcr.io/johnb-7/hdhr-ac4:1.5`
-
-> I have been using this with Plex DVR for quite some time. It has been rock solid and reliable. DRM has been enabled on all but one channel in Atlanta. Maybe one day DRM will be sorted out and I can get all the channels again. It was fun while it lasted.
+## arm64 Fork
+> This is a fork of [johnb-7/hdhr-ac4](https://github.com/johnb-7/hdhr-ac4) to have hdhr-ac4 compiled using the `arm64`
+> architecture, as my use case is running this on a Raspberry Pi.
  
 ## Description
-
->This project aims to emulate an HDHomerun tuner that supplies ATSC 3.0 programs with AC3 audio.
+> This project aims to emulate an HDHomerun tuner that supplies ATSC 3.0 programs with AC3 audio.
 
 ## About
 
@@ -21,8 +14,21 @@
 >This application pretends to be an HDHomerun device that offers ATSC 3.0 programs. When a request comes in to tune one of the programs, it forwards that request to a real HDHomerun device and passes the resulting stream back to the original requester after converting the AC4 audio stream to AC3 audio.
 
 ## Why?
+> This allows my HDHR5-4K to serve ATSC 3.0 programs to my Emby server(now native support?) and PLEX server with Live TV
+> and DVR functionality. Converting audio to AC3 before the server receives it allows everything to work as it always
+> has with HDHomerun tuners.
 
->This allows my HDHR5-4K to serve ATSC 3.0 programs to my Emby server(now native support?) and PLEX server with Live TV and DVR functionality. Converting audio to AC3 before the server receives it allows everything to work as it always has with HDHomerun tuners.
+## Docker Image
+> Added docker image to GitHub Container Registry. This can be used instead of building your own. It was built using the
+> latest repo and "emby-server-deb_4.8.8.0_arm64.deb" for ffmpeg.
+
+> ### Quick start:
+>> `docker run -p 80:80 -p 5004:5004 -e "HDHR_IP=192.168.1.1" -e "HOST_IP=192.168.1.2" -e "DEVICEID_SWAP=1"
+> ghcr.io/scacner/hdhr-ac4-arm64:v1.0.0`
+
+> I have been using this with Plex DVR for quite some time. It has been rock solid and reliable. DRM has been enabled on
+> all but one channel in Atlanta. Maybe one day DRM will be sorted out and I can get all the channels again. It was fun
+> while it lasted.
 
 ## Configuration 
 >Set in docker environent
@@ -65,9 +71,8 @@
 >2. The final container copies in ffmpeg binaries. Python is installed and a few python modules added. The 2 python files are copied over and the launch command is set.
 
 ## Run Docker container
->Example container run command:
-
->`docker run -p 80:80 -p 5004:5004 -e "HDHR_IP=10.1.1.2" -e "HOST_IP=10.0.0.100" -e "DEVICEID_SWAP=1" hdhr-ac4`
+> Example container run command:
+>> `docker run -p 80:80 -p 5004:5004 -e "HDHR_IP=10.1.1.2" -e "HOST_IP=10.0.0.100" -e "DEVICEID_SWAP=1" hdhr-ac4-arm64`
 
 >The HDHomerun API being implemented is here: https://info.hdhomerun.com/info/http_api 
 
@@ -81,7 +86,7 @@
 >>- http://HOST:80/lineup_status.json - returns the same response as the real HDHomerun device
 
 ## Notes
->- Please report issues or send pull requests here: https://github.com/johnb-7/hdhr-ac4
+>- Please report issues or send pull requests here: https://github.com/scacner/hdhr-ac4-arm64
 >- Channel changes are a little slower due to the extra step
 >- VLC was used a lot in the early testing. Example URL for host 192.168.1.1 with program 111.1: http://192.168.1.1:5004/auto/v111.1
 >- The development container (Dockerfile-dev) is very similar but does not automatically launch the application and can be mounted using your editor of choice for debugging the Python application or ffmpeg. It also installs some extra software specifically for development.
