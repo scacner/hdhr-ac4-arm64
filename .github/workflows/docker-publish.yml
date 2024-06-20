@@ -2,7 +2,6 @@ name: Docker Publish
 
 on:
   push:
-    branches: [ "main" ]
     # Publish semver tags as releases.
     tags: [ 'v*.*.*' ]
     # Don't run if the readme is the only thing changed
@@ -43,10 +42,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: |
-            type=ref,event=tag
-            # set latest tag for default branch
-            type=raw,value=latest,enable=${{ github.ref_name == 'main' }}
+          tags: type=ref,event=tag
 
       - name: Build and push Docker image
         id: build-and-push
