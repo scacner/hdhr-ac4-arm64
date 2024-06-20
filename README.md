@@ -59,14 +59,16 @@
 >>This should not need to be changed, but can be modified if the ATSC 3.0 streams needs specifi ffmpeg handling.
 
 ## Build Docker Container
->Download the latest Emby installer from https://emby.media/linux-server.html and save it in the docker build directory. Update Dockerfile to point to the file. Currently using emby-server-deb_4.8.0.21_amd64.deb
->Example Dockerfile build command:
+> Download the latest Emby installer from https://emby.media/linux-server.html and save it in the docker build
+> directory. Update Dockerfile to point to the file. Currently, using emby-server-deb_4.8.8.0_arm64.deb
 
->`docker build -f Dockerfile -t hdhr-ac4 .`
+> Example Dockerfile build command:
+>> `docker build -f Dockerfile -t hdhr-ac4-arm64 .`
 
->This build uses ffmpeg binary from Emby. The Emby team has a custom version of ffmpeg tha has several improvements over the original ffmpeg branch. 
->Version 1.0.0 of this docker build created the custom ffmpeg from scratch which took much longer and is a little dated at this point. 
->A quick explanation for the docker build that is based on ubuntu 20:
+> This build uses ffmpeg binary from Emby. The Emby team has a custom version of ffmpeg that has several improvements
+> over the original ffmpeg branch. Version 1.0.0 of the [johnb-7/hdhr-ac4](https://github.com/johnb-7/hdhr-ac4) docker
+> build created the custom ffmpeg from scratch which took much longer and is a little dated at this point. A quick
+> explanation for the docker build that is based on ubuntu 20:
 >1. The ffmpeg container extracts Emby installer
 >2. The final container copies in ffmpeg binaries. Python is installed and a few python modules added. The 2 python files are copied over and the launch command is set.
 
