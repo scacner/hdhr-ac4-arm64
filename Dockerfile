@@ -1,4 +1,4 @@
-FROM        ubuntu:20.04 AS base
+FROM        ubuntu:25.10 AS base
 
 WORKDIR     /home
 
